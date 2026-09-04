@@ -18,10 +18,12 @@ export const imageLibrary: Record<string, string> = {
 };
 
 export function resolveImage(key: string): string {
-  if (!key) return imageLibrary.sneaker;
+  const fallback = sneaker;
+  if (!key) return fallback;
   if (key.startsWith("http") || key.startsWith("/")) return key;
-  return imageLibrary[key] ?? imageLibrary.sneaker;
+  return imageLibrary[key] ?? fallback;
 }
+
 
 export const inr = (n: number) =>
   "₹" + n.toLocaleString("en-IN", { maximumFractionDigits: 0 });
